@@ -1,3 +1,5 @@
+# 深度学习
+
 ## k近邻算法
 
 计算流程：
@@ -28,3 +30,11 @@
 <img src="D:\machine vision\视觉识别\笔记\捕获.PNG" alt="前向传播" style="zoom: 50%;" />
 
 反向传播
+
+## 神经网络
+
+### 不一致的说法
+
+损失函数loss function = 残差函数error function = 代价函数 cost function
+
+激活函数active function = 转移函数 transfer function
