@@ -18,8 +18,8 @@ import os
 
 preprocess = 'blur'  # thresh
 
-image = cv2.imread('scan.jpg')
-image = cv2.flip(image, -1)
+image = cv2.imread('14988.png')
+# image = cv2.flip(image, -1)
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 # 阈值
