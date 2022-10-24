@@ -38,3 +38,4 @@
 损失函数loss function = 残差函数error function = 代价函数 cost function
 
 激活函数active function = 转移函数 transfer function
+
