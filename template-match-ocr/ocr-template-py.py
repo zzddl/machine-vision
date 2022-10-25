@@ -4,17 +4,10 @@
 # @date 2022/10/17
 # @file ocr-template-py.py
 
-import argparse
 import cv2
 import numpy as np
 import myutils
 from imutils import contours
-
-# 设置参数
-# ap = argparse.ArgumentParser()
-# ap.add_argument("-i", "--image", required=True, help="path to input image")
-# ap.add_argument("-t", "--template", required=True, help="path to template OCR-A image")
-# args = vars(ap.parse_args())
 
 # 　指定信用卡类型
 FIRST_NUMBER = {

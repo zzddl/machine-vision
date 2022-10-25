@@ -106,7 +106,7 @@ def draw_lines(img, lines):
     """
     在img上面绘制lines
     :param img:
-    :param lines:
+    :param lines: 两条线段: [np.array([[xmin1, ymin1], [xmax1, ymax1]]), np.array([[xmin2, ymin2], [xmax2, ymax2]])]
     :return:
     """
     left_line, right_line = lines
@@ -128,11 +128,26 @@ def show_line(color_img):
     return color_img
 
 
-# if __name__ == 'main':
-#     # 获取彩色图像
+# 识别图片
 color_img = cv2.imread('img.jpg')
-
 result = show_line(color_img)
-
 cv2.imshow('output', result)
 cv2.waitKey(0)
+
+# 识别视频
+
+capture = cv2.VideoCapture('video.mp4')
+fourcc = cv2.VideoWriter_fourcc(*'MJPG')
+outfile = cv2.VideoWriter('output.avi', fourcc, 25., (1280, 368))
+# 循环处理每一帧视频
+while capture.isOpened():
+    _, frame = capture.read()
+    origin = np.copy(frame)
+    frame = show_line(frame)
+    output = np.concatenate((origin, frame), axis=1)
+    outfile.write(output)
+    cv2.imshow('output', frame)
+    # 处理退出
+    if cv2.waitKey(1) == ord('q'):
+        cv2.destroyAllWindows()
+        break
