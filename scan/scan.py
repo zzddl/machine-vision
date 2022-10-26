@@ -8,17 +8,20 @@ import cv2
 import numpy as np
 
 
-# 寻找原图像的四个坐标点
+# 寻找原图像的四个坐标点(传入的pts数据的原图像的数据，只是顺序不对，order_points是用来改变顺序)
 def order_points(pts):
+    print('pts', pts)
     # 一共有四个坐标点
     rect = np.zeros((4, 2), dtype="float32")
     # 按顺序0123找到四个坐标点为左上，右上，右下，左下
-    # 计算左上，右下
+    # 计算左上，右下(把x，y坐标相加，最小的是左上，最大是右下)
     s = pts.sum(axis=1)
+    print('s', s)
     rect[0] = pts[np.argmin(s)]
+    print('rect0', rect[0])
     rect[2] = pts[np.argmax(s)]
 
-    # 计算右上，左下
+    # 计算右上，左下（右上是y-x最小的，左下是y-x最大的）
     diff = np.diff(pts, axis=1)
     rect[1] = pts[np.argmin(diff)]
     rect[3] = pts[np.argmax(diff)]
@@ -29,8 +32,10 @@ def order_points(pts):
 def four_points_transform(image, pts):
     # 获取输入坐标点
     rect = order_points(pts)
+    print('rect', rect)
     (tl, tr, br, bl) = rect
 
+    # 取较大的
     # 计算输入的w和h的值
     widthA = np.sqrt(((tr[0] - tl[0]) ** 2) + ((tr[1] - tl[1]) ** 2))
     widthB = np.sqrt(((br[0] - bl[0]) ** 2) + ((br[1] - bl[1]) ** 2))
