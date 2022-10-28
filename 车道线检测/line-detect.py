@@ -112,7 +112,7 @@ def draw_lines(img, lines):
     left_line, right_line = lines
     cv2.line(img, tuple(left_line[0]), tuple(left_line[1]), color=(0, 0, 255), thickness=5)
 
-    cv2.line(img, tuple(right_line[0]), tuple(right_line[1]), color=(0, 255, 0), thickness=5)
+    cv2.line(img, tuple(right_line[0]), tuple(right_line[1]), color=(0, 0, 255), thickness=5)
 
 
 def show_line(color_img):
@@ -135,19 +135,19 @@ cv2.imshow('output', result)
 cv2.waitKey(0)
 
 # 识别视频
-
-capture = cv2.VideoCapture('video.mp4')
-fourcc = cv2.VideoWriter_fourcc(*'MJPG')
-outfile = cv2.VideoWriter('output.avi', fourcc, 25., (1280, 368))
-# 循环处理每一帧视频
-while capture.isOpened():
-    _, frame = capture.read()
-    origin = np.copy(frame)
-    frame = show_line(frame)
-    output = np.concatenate((origin, frame), axis=1)
-    outfile.write(output)
-    cv2.imshow('output', frame)
-    # 处理退出
-    if cv2.waitKey(1) == ord('q'):
-        cv2.destroyAllWindows()
-        break
+#
+# capture = cv2.VideoCapture('video.mp4')
+# fourcc = cv2.VideoWriter_fourcc(*'MJPG')
+# outfile = cv2.VideoWriter('output.avi', fourcc, 25., (1280, 368))
+# # 循环处理每一帧视频
+# while capture.isOpened():
+#     _, frame = capture.read()
+#     origin = np.copy(frame)
+#     frame = show_line(frame)
+#     output = np.concatenate((origin, frame), axis=1)
+#     outfile.write(output)
+#     cv2.imshow('output', frame)
+#     # 处理退出
+#     if cv2.waitKey(1) == ord('q'):
+#         cv2.destroyAllWindows()
+#         break
