@@ -41,7 +41,7 @@ while True:
         cv2.rectangle(img, box, color=(0, 255, 0), thickness=3)
         cv2.putText(img, classnames[classId-1].upper(), (box[0]+10, box[1]+30),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
-        cv2.putText(img, str(round(confidence*100, 2)), (box[0] + 150, box[1] + 30),
+        cv2.putText(img, str(round(confidence*100, 2)), (box[0] + 200, box[1] + 30),
                     cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
 
     cv2.imshow('img', img)
