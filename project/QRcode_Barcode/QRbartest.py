@@ -23,7 +23,6 @@ while True:
 
     for barcode in decode(img):
         # barcode中包含data（码中存储的信息），type（码的类型），rect（左上角坐标和宽、高），polygon（外界多边形框的四个顶点的坐标）
-
         # print(barcode.data)  # b代表的是byte，
         mydata = barcode.data.decode('utf-8')
         print(mydata)
@@ -36,9 +35,12 @@ while True:
             mycolor = (0, 0, 255)
 
         pts = np.array([barcode.polygon], np.int32)
+        print(pts)
         pts = pts.reshape((-1, 1, 2))  # -1表示自动计算，shape为(4, 1, 2)。导入polylines之前都要做这个操作(-1,1,2)
+        print([pts])
         cv2.polylines(img, [pts], True, mycolor, 4)
         pts2 = barcode.rect  # barcode的外界矩形
+        print(pts2)
         # (pts2[0], pts2[1])是左上角顶点的坐标。0.9是字体大小
         cv2.putText(img, output, (pts2[0], pts2[1]), cv2.FONT_HERSHEY_SIMPLEX, 0.9, mycolor, 2)
 

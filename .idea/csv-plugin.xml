@@ -3,6 +3,13 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
+        <entry key="\PyTorchLearn\DatasetandDataloader\diabetes.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="\PyTorchLearn\MultipleDimensionInput\diabetes.csv">
           <value>
             <Attribute>

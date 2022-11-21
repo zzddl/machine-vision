@@ -82,7 +82,7 @@ def get_lines(edge_img):
         x_coords = np.ravel([[line[0][0], line[0][2]] for line in lines])
         y_coords = np.ravel([[line[0][1], line[0][3]] for line in lines])
 
-        poly = np.polyfit(x_coords, y_coords, deg=1)
+        poly = np.polyfit(x_coords, y_coords, deg=1)  # 曲线拟合
         point_min = (np.min(x_coords), np.polyval(poly, np.min(x_coords)))
         point_max = (np.max(x_coords), np.polyval(poly, np.max(x_coords)))
 
